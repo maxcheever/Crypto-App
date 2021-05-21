@@ -11,6 +11,7 @@ bg2 = 'light slate blue'
 up = 'green3'
 down = 'red3'
 textColor = 'white'
+text2 = 'gray73'
 infoText = l.text()
 statsFont = ('Arial', 11, 'normal')
 
@@ -150,7 +151,7 @@ prevBtn.place(relx=.01, rely=.885, relwidth=.15, relheight=.1)
 infoTitle = tk.Label(infoFrame, text='--', bg=bg1, fg=textColor,  font=('Arial', 15, 'bold'))
 infoTitle.place(relx=0, rely=0.01, relwidth=1, relheight=0.08)
 
-info = tk.Text(infoFrame, bg=bg2)
+info = tk.Text(infoFrame, bg=bg2, wrap=tk.WORD, cursor='pencil')
 info.insert(1.0, infoText)
 # this makes it so you cant edit the text
 info.configure(state='disabled')
