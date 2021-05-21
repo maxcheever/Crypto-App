@@ -53,9 +53,29 @@ def fillStats(dictionary):
   if perChange[0] == '-':
     usdChnge.config(fg=down)
     pChange.config(fg=down)
+
+    usdDownC = tk.Canvas(statsFrame, highlightbackground=bg1, bg=bg1)
+    usdDownC.grid()
+    usdDownC.place(relx=0.39, rely=0.305, relwidth=0.1, relheight=.05)
+    usdDownC.create_line(6, 0, 6, 9, arrow=tk.LAST, fill=down)
+
+    perDownC = tk.Canvas(statsFrame, highlightbackground=bg1, bg=bg1)
+    perDownC.grid()
+    perDownC.place(relx=0.83, rely=0.2, relwidth=0.1, relheight=.05)
+    perDownC.create_line(6, 0, 6, 9, arrow=tk.LAST, fill=down)
   else: 
     usdChnge.config(fg=up)
     pChange.config(fg=up)
+
+    perUpC = tk.Canvas(statsFrame, highlightbackground=bg1, bg=bg1)
+    perUpC.grid()
+    perUpC.place(relx=0.83, rely=0.175, relwidth=0.05, relheight=.05)
+    perUpC.create_line(6, 80, 6, 10, arrow=tk.LAST, fill=up)
+
+    usdUpC = tk.Canvas(statsFrame, highlightbackground=bg1, bg=bg1)
+    usdUpC.grid()
+    usdUpC.place(relx=0.39, rely=0.285, relwidth=0.05, relheight=.05)
+    usdUpC.create_line(6, 80, 6, 10, arrow=tk.LAST, fill=up)
 
   coinPrice.config(text=price)
   usdChnge.config(text=usdChange)
