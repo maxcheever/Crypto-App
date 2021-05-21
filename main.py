@@ -26,15 +26,22 @@ def submit():
   else: 
     Coin = coin.capitalize()
 
-  statsDict, abrv = gi.getStats(coin)
-  infoDict = gi.getInfo(coin)
+  try:
+    statsDict, abrv = gi.getStats(coin)
+    infoDict = gi.getInfo(coin)
 
-  infoTitle.config(text=f'{Coin} ({abrv})')
-  title.config(text=f'{Coin} ({abrv})')
+    infoTitle.config(text=f'{Coin} ({abrv})')
+    title.config(text=f'{Coin} ({abrv})')
 
-  fillStats(statsDict)
-  fillInfo(infoDict)
-
+    fillStats(statsDict)
+    fillInfo(infoDict)
+    # makes it so if the error message was displayed, it will display again without having to run the code over again
+    errorLabel.config(fg=bg1)
+  except:
+    errorLabel.config(fg=down)
+    errorLabel.config(text=f'\'{coin}\' is not a coin. Please check spelling and try again')
+    errorLabel.place(relx=0.18, rely=0.96)
+  
   coinEntry.delete(0,50)
 
 def fillInfo(dictionary):
@@ -157,6 +164,8 @@ coinEntry.place(relx=0.18, rely=0.903)
 
 infoBtn = tk.Button(infoFrame, text='Show Info', bg='white', command=submit)
 infoBtn.place(relx=.4, rely=.9, relwidth=.15, relheight=.06)
+
+errorLabel = tk.Label(infoFrame, bg=bg1, font=('Arial', 7, 'normal'))
 
 nextBtn = tk.Button(infoFrame, text="Next >", command=lambda:showPage(statsFrame), bg='white')
 
